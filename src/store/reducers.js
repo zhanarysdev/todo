@@ -1,9 +1,11 @@
-import { combineReducers } from 'redux'
+import {
+    combineReducers
+} from 'redux'
 
 
-const initialState = [{
-    page: 1
-}]
+const initialState = () => {
+    return {page: 1}
+}
 
 
 
@@ -29,7 +31,7 @@ export const ismodal = (state = {}, action) => {
 
 
 export const datafetch = (state = initialState, action) => {
-    console.log(state.page)
+    // console.log(state.page)
     switch (action.type) {
         // // case 'FETCH_DATA':
         // // 	return Object.assign({}, state, {
@@ -44,9 +46,9 @@ export const datafetch = (state = initialState, action) => {
         //         action: error
         //     });
         case 'asd':
-            return action.text
+            return {...state}
         case 'asdf':
-            return [...state]
+            return {...state, page:2}
         default:
             return state;
     }
