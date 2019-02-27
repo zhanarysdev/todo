@@ -8,31 +8,40 @@ class TaskCreatorContainer extends React.Component {
         super(props) 
            this.state = {
                 user_name: '',
-                user_valid: false,
+                user_name_valid: false,
                 user_email: '',
-                email_valid: false,
-                task_text: ''
+                user_email_valid: false,
+                task_text: '',
+                task_valid: ''
         }
+    }
+    nameHundler(e) {
+        !validator.isEmpty(e.target.value, {ignore_whitespace:true}) 
+        ? 
+        this.setState({user_name: e.target.value, user_name_valid: true}) 
+        :
+        console.log("wrong data")
     }
     emailHundler(e) {
         validator.isEmail(e.target.value) 
         ? 
-        this.setState({user_email: e.target.value, email_valid: true}) 
+        this.setState({user_email: e.target.value, user_email_valid: true}) 
+        :
+        console.log("wrong email")
+    }
+    
+
+    taskHundler(e) {
+        !validator.isEmpty(e.target.value, {ignore_whitespace:true}) 
+        ? 
+        this.setState({task_text: e.target.value, task_valid: true}) 
         :
         console.log("wrong data")
     }
+    // sendHundler(e){
+
+    // }
     render(){
-        const nameHundler = (e) =>  {
-            this.setState({user_name: e.target.value})
-        }
-        
-    
-        const taskHundler = (e) => {
-            this.setState({task_text: e.target.value})
-        }
-        // sendHundler(e){
-    
-        // }
     return (
         <TaskCreator context={this} />
     )
