@@ -13,8 +13,8 @@ const TaskCreator = (props) => {
                     <label htmlFor="user_name">User Name</label>
                 </div>
                 <div className="input-field col s6">
-                    <input  id="email" type="text" className="validate" onChange={(e)=>{
-                        emailHundler(e)
+                    <input  id="email" type="text" className="validate" style={props.context.state.email_valid ? {borderColor: "green"} : {borderColor: "red"}} onChange={(e)=>{
+                        props.context.emailHundler(e)
                     }} />
                     <label htmlFor="email">User email</label>
                 </div>

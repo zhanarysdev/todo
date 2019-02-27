@@ -1,4 +1,5 @@
 import React from 'react';
+import validator from 'validator'
 import TaskCreator from '../components/TaskCreator';
 
 
@@ -7,16 +8,22 @@ class TaskCreatorContainer extends React.Component {
         super(props) 
            this.state = {
                 user_name: '',
+                user_valid: false,
                 user_email: '',
+                email_valid: false,
                 task_text: ''
         }
+    }
+    emailHundler(e) {
+        validator.isEmail(e.target.value) 
+        ? 
+        this.setState({user_email: e.target.value, email_valid: true}) 
+        :
+        console.log("wrong data")
     }
     render(){
         const nameHundler = (e) =>  {
             this.setState({user_name: e.target.value})
-        }
-        const emailHundler = (e) =>  {
-            this.setState({user_email: e.target.value})
         }
         
     
@@ -26,9 +33,8 @@ class TaskCreatorContainer extends React.Component {
         // sendHundler(e){
     
         // }
-        console.log(this.props)
     return (
-        <TaskCreator nameHundler={nameHundler} emailHundler={emailHundler} taskHundler={taskHundler} />
+        <TaskCreator context={this} />
     )
 }
 }
