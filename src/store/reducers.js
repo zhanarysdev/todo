@@ -33,7 +33,7 @@ export const ismodal = (state = {}, action) => {
 export const datafetch = (state = initialState, action) => {
     // console.log(state.page)
     switch (action.type) {
-        // // case 'FETCH_DATA':
+        // case 'FETCH_DATA':
         // // 	return Object.assign({}, state, {
         // //        isFetching: true
         // //      });
