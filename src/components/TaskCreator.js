@@ -39,7 +39,12 @@ const TaskCreator = (props) => {
                         : 
                         true 
                     } 
-                    style={{width: "100%", focus: "none"}}>
+                    style={{width: "100%", focus: "none"}}
+                    onClick={(e)=>{
+                        e.preventDefault()
+                        props.context.sendHundler()
+                    }}
+                    >
                     create task 
                 </button>
             </div>

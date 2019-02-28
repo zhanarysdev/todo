@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Task from '../components/Task';
 import {fetchData} from '../store/actions'
-import * as tasks from '../fakeData.json'
 import Pagination from '../components/Pagination'
 
 class TaskListComponent extends React.Component {
@@ -21,7 +20,7 @@ class TaskListComponent extends React.Component {
         return(
             <div>
                 <Task data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''} />
-                <Pagination count={tasks.default.message.total_task_count} page={this.props.datafetch}/>
+                <Pagination />
             </div>
         )
     }

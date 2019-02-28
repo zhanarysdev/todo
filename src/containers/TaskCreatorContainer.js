@@ -12,7 +12,7 @@ class TaskCreatorContainer extends React.Component {
                 user_email: '',
                 user_email_valid: false,
                 task_text: '',
-                task_valid: ''
+                task_valid: false
         }
     }
     nameHundler(e) {
@@ -38,9 +38,32 @@ class TaskCreatorContainer extends React.Component {
         :
         console.log("wrong text")
     }
-    // sendHundler(e){
+    sendHundler(e){
+        if(!this.state.user_name_valid && this.state.user_email_valid && this.state.task_valid){
+            return console.log("somthing wroong")
+        }
 
-    // }
+        const data = new FormData();
+        data.append("username", this.state.user_name)  
+        data.append("email", this.state.user_email)
+        data.append("text", this.state.task_text)
+       
+        fetch('https://uxcandy.com/~shapoval/test-task-backend/create?developer=Zhanarys',{
+                method: 'POST',
+                body: data,
+                })
+                .then(response => console.log(response.json()))
+                .then(json => {
+                    return console.log(json);
+                })
+                .catch(e => {
+                    return console.log(e)
+                });
+
+            
+        
+        
+    }
     render(){
     return (
         <TaskCreator context={this} />

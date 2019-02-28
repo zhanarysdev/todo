@@ -34,7 +34,7 @@ const Pagination = (props) => {
                 {mass}
                 <li className="waves-effect"
                     onClick={()=>{
-                        props.fetchData(props.page.page+1)
+                        props.fetchData(currentPage+1)
                     }}
                 >
                     <a href="#!">
