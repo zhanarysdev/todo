@@ -1,0 +1,14 @@
+.warning {
+    background: yellow;
+    width: 350px;
+    height: 200px;
+    position: absolute;
+    top: 90px;
+    z-index: 1000;
+    right: 10px;
+    visibility: visible;
+    left: auto;
+    display: block;
+    text-align: center;
+}
+

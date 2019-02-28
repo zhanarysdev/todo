@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import Modal from './Modal';
-import {isModal} from '../store/actions'
+import Modal from './modal/Modal';
+import {isModal,logOutAct} from '../store/actions'
 const NavBar = (props) => {
     return (
         <React.Fragment>
@@ -10,12 +10,22 @@ const NavBar = (props) => {
                 <div className="nav-wrapper grey darken-4">
                     <Link to="/" className="brand-logo">Task manager</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        {props.login
+                        ?
+                        <li><a href="#"
+                            onClick={(e)=>{
+                                e.preventDefault()
+                                props.logOut()
+                            }}
+                        >Log out</a></li>
+                        :
                         <li><a href="#"
                             onClick={(e)=>{
                                 e.preventDefault()
                                 props.some(props.isModal.isModal)
                             }}
                         >Log in</a></li>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -29,7 +39,8 @@ const stateToProps = state => {
 }
 
 const dispatchToProps = {
-       some: isModal
+       some: isModal,
+       logOut: logOutAct
 }
 
 export default connect(stateToProps, dispatchToProps)(NavBar);

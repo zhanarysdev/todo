@@ -8,6 +8,7 @@ import ControlButton from './components/ControlButton';
 import TaskCreatorContainer from './containers/TaskCreatorContainer';
 import NavBarContainer from './containers/NavBarContainer';
 import NavBar from './components/NavBar';
+import './index.css'
 
 
 const App = (props) => {
