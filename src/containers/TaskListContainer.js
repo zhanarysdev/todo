@@ -1,7 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import TaskList from '../components/TaskList';
+import Task from '../components/Task';
 import {fetchData} from '../store/actions'
+import * as tasks from '../fakeData.json'
+import Pagination from '../components/Pagination'
+
 class TaskListComponent extends React.Component {
     constructor(props){
         super(props)
@@ -12,12 +15,13 @@ class TaskListComponent extends React.Component {
 
 
     componentDidMount(){
-        this.props.fetchData("asd")
+        this.props.fetchData()
     }
     render(){
         return(
             <div>
-                <TaskList {...this.props} />
+                <Task data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''} />
+                <Pagination count={tasks.default.message.total_task_count} page={this.props.datafetch}/>
             </div>
         )
     }

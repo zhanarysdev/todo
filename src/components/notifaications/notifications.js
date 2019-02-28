@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 import styles from './index.css'
 export const Warning = (props) => {
-    console.log(props)
     var node = document.createElement("div");
     node.className = `modal ${styles.warning}`
     node.id = 'warning'

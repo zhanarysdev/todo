@@ -3,18 +3,15 @@ import {
 } from 'redux'
 
 
-const initialState = () => {
-    return {page: 1}
-}
 
 
 
-export const login = (state = {}, action) => {
+export const login = (state = {login: false}, action) => {
     switch (action.type) {
         case 'LOG_IN':
-            return action.login;
+            return {login:action.login};
         case 'LOG_OUT':
-            return action.login;
+            return {login:action.login};
         default:
             return state;
     }
@@ -30,25 +27,19 @@ export const isModal = (state = {isModal: false}, action) => {
 };
 
 
-export const datafetch = (state = initialState, action) => {
+export const datafetch = (state = {page:1}, action) => {
     // console.log(state.page)
     switch (action.type) {
-        // case 'FETCH_DATA':
-        // // 	return Object.assign({}, state, {
-        // //        isFetching: true
-        // //      });
-        // case 'FETCH_DATA_OK':
-        //     return action.tasks
+        case 'FETCH_DATA':
+            return {...state, isFetching: true}
+        case 'FETCH_DATA_OK':
+            return {...state, data: action.tasks, page: action.page}
 
-        // case 'FETCH_DATA_NOK':
-        //     return Object.assign({}, state, {
-        //         isFetching: false,
-        //         action: error
-        //     });
-        case 'asd':
-            return {...state}
-        case 'asdf':
-            return {...state, page:2}
+        case 'FETCH_DATA_NOK':
+            return Object.assign({}, state, {
+                isFetching: false,
+                action: error
+            });
         default:
             return state;
     }
@@ -68,5 +59,4 @@ export const reducers = combineReducers({
     login,
     isModal,
     datafetch,
-    initialState,
 });

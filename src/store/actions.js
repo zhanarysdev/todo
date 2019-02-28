@@ -16,77 +16,32 @@ export const isModal = (isModal) => {
 	changer: !isModal
 })}
 
-export const fetchData = (props) => {
-//   let ne = store.getState().page.page
-// 	return (dispatch)=>{
-// 	dispatch({
-//       type: 'FETCH_DATA',
-//     });
-// 	return fetch(`https://uxcandy.com/~shapoval/test-task-backend/?developer=Zhanarys&page=${ne}`)
-// 		 .then(response => response.json().then(body => ({ response, body })))
-//       		.then(({ response, body }) => {
-//         if (!response.ok) {
-//           // If request was failed, dispatching FAILURE action.
-//           dispatch({
-//             type: 'FETCH_DATA_NOK',
-//             error: body.error
-//           });
-//         } else {
-          
-//           // When everything is ok, dispatching SUCCESS action.
-          
-//           dispatch({
-//             type: 'FETCH_DATA_OK',
-//             tasks: body.message.tasks
-//           });
-//         }
-//       })
-return (dispatch)=>{
-    // console.log("111")
-dispatch({
-    type: 'asd',
-    text:'hi'
-})
-  setTimeout(()=>{
-    dispatch({
-        type: 'asdf',
-        text: 2
-    })
-  }, 5000)    
-}
-  }
-
-
-  
-
-
-export const nextPage = () => {
-  let ne = store.getState().page.page
-  ne++
-  return (dispatch)=>{
-    dispatch({
-      type: 'NEXT_PAGE'
+export const fetchData = (props=1) => {
+	return (dispatch)=>{
+	dispatch({
+      type: 'FETCH_DATA',
     });
-    return fetch(`https://uxcandy.com/~shapoval/test-task-backend/?developer=Zhanarys&page=${ne++}`)
-    .then(response => response.json().then(body => ({ response, body })))
-         .then(({ response, body }) => {
-       if (!response.ok) {
-         // If request was failed, dispatching FAILURE action.
-         dispatch({
-           type: 'FETCH_DATA_NOK',
-           error: body.error
-         });
-       } else {
-         
-         // When everything is ok, dispatching SUCCESS action.
-         console.log("next action everithing ok", body.message)
-         dispatch({
-           type: 'NEXT_PAGE_OK',
-           tasks: body.message.tasks
-         });
-       }
-     })
-     
- 
-  }
+	return fetch(`https://uxcandy.com/~shapoval/test-task-backend/?developer=Zhanarys&page=${props}`)
+		 .then(response => response.json().then(body => ({ response, body })))
+      		.then(({ response, body }) => {
+        if (!response.ok) {
+          // If request was failed, dispatching FAILURE action.
+          dispatch({
+            type: 'FETCH_DATA_NOK',
+            error: body.error
+          });
+        } else {
+          
+          // When everything is ok, dispatching SUCCESS action.
+          
+          dispatch({
+            type: 'FETCH_DATA_OK',
+            tasks: body.message,
+            page: props
+          });
+        }
+      })
+    }
+
 }
+

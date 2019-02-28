@@ -10,7 +10,7 @@ const NavBar = (props) => {
                 <div className="nav-wrapper grey darken-4">
                     <Link to="/" className="brand-logo">Task manager</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        {props.login
+                        {props.login.login
                         ?
                         <li><a href="#"
                             onClick={(e)=>{
