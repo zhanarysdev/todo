@@ -9,7 +9,10 @@ class TaskListComponent extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            some: 'saf'
+            sortByName: 'asc',
+            sortById: 'asc',
+            sortByEmail: 'asc',
+            sortByStatus: 'asc'
         }
     }
 
@@ -19,12 +22,38 @@ class TaskListComponent extends React.Component {
     }
 
     render(){
-        const pageChanger=(page=this.props.datafetch.page , sort, dir)=>{
-            this.props.fetchData(page, sort, dir)
+        const pageChanger=(page=this.props.datafetch.page, dir, from)=>{
+            if(from) {
+                switch (from) {
+                    case "username":
+                     console.log('from')
+                        this.setState({sortByName: dir == "asc" ?  "desc" : "asc"})
+                        this.props.fetchData(page, "username", this.state.sortByName)
+                    break
+                    case "id":
+                        this.setState({sortById: dir == "asc" ?  "desc" : "asc"})
+                        this.props.fetchData(page, "id", this.state.sortById)
+                    break;
+                    case "email":
+                        this.setState({sortByEmail: dir == "asc" ?  "desc" : "asc"})
+                        this.props.fetchData(page, "email", this.state.sortByEmail)
+                    break;
+                    case "status":
+                        this.setState({sortByStatus: dir == "asc" ?  "desc" : "asc"})
+                        this.props.fetchData(page, "status", this.state.sortByStatus)
+                    break;
+                
+                    default:
+                        return ""
+                        break;
+                }
+            } else {
+            this.props.fetchData(page)
+        }
         }
         return(
             <div>
-                <Sorter filter={pageChanger}/>
+                <Sorter filter={pageChanger} currentState={this.state}/>
                 <Task data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''} isAdmin={this.props.login.login}/>
                 <Pagination 
                     data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''}    

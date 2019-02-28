@@ -19,7 +19,7 @@ const Pagination = (props) => {
         return (
             <ul className="pagination">
 
-                <li className={currentPage === 1 ? 'disabled' : ''}
+                <button className="btn waves-effect waves-light" disabled={currentPage === 1 ? 'disabled' : ''} 
                      onClick={()=>{
                         props.pageChanger(currentPage-1)
                     }}
@@ -27,10 +27,10 @@ const Pagination = (props) => {
                     <a href="#!">
                         <i className="material-icons">chevron_left</i>
                     </a>
-                </li>
+                </button>
 
                 {mass}
-                <li className="waves-effect"
+                <button className="btn waves-effect waves-light" disabled={currentPage >= pageCount / 3 ? 'disabled' : ''}
                     onClick={()=>{
                         props.pageChanger(currentPage+1)
                     }}
@@ -38,7 +38,7 @@ const Pagination = (props) => {
                     <a href="#!">
                         <i className="material-icons">chevron_right</i>
                     </a>
-                </li>
+                </button>
 
             </ul>
         )

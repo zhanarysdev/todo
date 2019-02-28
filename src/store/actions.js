@@ -17,7 +17,7 @@ export const isModal = (isModal) => {
 })}
 
 export const fetchData = (page=1, sort_field, sort_direction) => {
-  console.log("from action", page, sort_field, sort_direction)
+  console.log(page, sort_field, sort_direction)
 	return (dispatch)=>{
 	dispatch({
       type: 'FETCH_DATA',
