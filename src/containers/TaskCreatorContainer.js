@@ -20,7 +20,7 @@ class TaskCreatorContainer extends React.Component {
         ? 
         this.setState({user_name: e.target.value, user_name_valid: true}) 
         :
-        console.log("wrong data")
+        console.log("wrong name")
     }
     emailHundler(e) {
         validator.isEmail(e.target.value) 
@@ -36,7 +36,7 @@ class TaskCreatorContainer extends React.Component {
         ? 
         this.setState({task_text: e.target.value, task_valid: true}) 
         :
-        console.log("wrong data")
+        console.log("wrong text")
     }
     // sendHundler(e){
 

@@ -21,14 +21,25 @@ const TaskCreator = (props) => {
             </div>
             <div className="row">
                 <div className="input-field col s12">
-                    <textarea id="task_text" className="materialize-textarea"  className="validate" style={props.context.state.task_valid ? {borderColor: "green"} : {borderColor: "red"}} onChange={(e)=>{
+                    <textarea id="task_text" className="materialize-textarea"  className="materialize-textarea validate" style={props.context.state.task_valid ? {borderBottomColor: "green"} : {borderColor: "red"}} onChange={(e)=>{
                         props.context.taskHundler(e)
                     }}></textarea>
                     <label htmlFor="task_text">Textarea</label>
                 </div>
             </div>
             <div className="row">
-                <button type="submit" className="waves-effect waves-light btn" disabled={props.context.state.user_name_valid && props.context.state.user_email_valid && props.context.state.task_valid ? false : true } style={{width: "100%"}}>
+                <button type="submit" 
+                    className="waves-effect waves-light btn" 
+                    disabled={
+                        props.context.state.user_name_valid 
+                        && props.context.state.user_email_valid 
+                        && props.context.state.task_valid 
+                        ? 
+                        false 
+                        : 
+                        true 
+                    } 
+                    style={{width: "100%", focus: "none"}}>
                     create task 
                 </button>
             </div>

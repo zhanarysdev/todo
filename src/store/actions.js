@@ -9,13 +9,14 @@ export const logOutAct = () => ({
   login: false
 });
 
-export const isModal = ismodal => ({
+export const isModal = (isModal) => {
+  console.log(!isModal)
+  return({
 	type: 'IS_MODAL',
-	ismodal
-})
+	changer: !isModal
+})}
 
 export const fetchData = (props) => {
-    console.log(props)
 //   let ne = store.getState().page.page
 // 	return (dispatch)=>{
 // 	dispatch({

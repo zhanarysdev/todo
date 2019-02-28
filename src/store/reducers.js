@@ -20,10 +20,10 @@ export const login = (state = {}, action) => {
     }
 };
 
-export const ismodal = (state = {}, action) => {
+export const isModal = (state = {isModal: false}, action) => {
     switch (action.type) {
         case 'IS_MODAL':
-            return action.ismodal;
+            return {isModal:action.changer};
         default:
             return state;
     }
@@ -66,7 +66,7 @@ export const nextPageer = (state = {}, action) => {
 
 export const reducers = combineReducers({
     login,
-    ismodal,
+    isModal,
     datafetch,
     initialState,
 });
