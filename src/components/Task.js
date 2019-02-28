@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 const Task = (props) => {
     const renderData = () => {
         return props.data
@@ -7,9 +8,17 @@ const Task = (props) => {
                 .map((obj, key) => {
                     return (
                         <tr key={key}>
+                            <td>  <label> <input type="checkbox" disabled={!props.isAdmin ? 'disabled' : ''}/> <span></span> </label></td>
                             <td>{obj.username}</td>
                             <td>{obj.email}</td>
                             <td>{obj.text}</td>
+                            <td>
+                                <Link to={`/edit/${obj.id}`} >
+                                <button disabled={!props.isAdmin ? 'disabled' : ''}>
+                                    edit
+                                </button>
+                                </Link>
+                            </td>
                         </tr>
                     )
                 })
@@ -20,6 +29,7 @@ const Task = (props) => {
             <table>
                 <thead>
                     <tr>
+                        <th>status</th>
                         <th>username</th>
                         <th>email</th>
                         <th>text</th>

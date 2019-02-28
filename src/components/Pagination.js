@@ -1,16 +1,14 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {fetchData} from '../store/actions'
 const Pagination = (props) => {
-    const pageCount = props.datafetch.data ? props.datafetch.data.total_task_count : ''
-    const currentPage = props.datafetch ? props.datafetch.page : ''
+    const pageCount = props.taskCount ? props.taskCount : ''
+    const currentPage = props.currentPage ? props.currentPage : ''
     const renderData = () => {
         var lim =  pageCount / 3
         var mass = []
         for (var index = 0; index < lim; index++) {
             mass.push(
                 <li
-                    className={currentPage === index + 1
+                    className={currentPage === index +1
                     ? "active"
                     : ""}
                     key={index}>
@@ -23,7 +21,7 @@ const Pagination = (props) => {
 
                 <li className={currentPage === 1 ? 'disabled' : ''}
                      onClick={()=>{
-                        props.fetchData(currentPage-1)
+                        props.pageChanger(currentPage-1)
                     }}
                 >
                     <a href="#!">
@@ -34,7 +32,7 @@ const Pagination = (props) => {
                 {mass}
                 <li className="waves-effect"
                     onClick={()=>{
-                        props.fetchData(currentPage+1)
+                        props.pageChanger(currentPage+1)
                     }}
                 >
                     <a href="#!">
@@ -48,10 +46,5 @@ const Pagination = (props) => {
     return renderData()
 }
 
-const stateToProps = state => {
-    return state
-}
-const dispatchToProps = {
-    fetchData
-}
-export default connect(stateToProps, dispatchToProps)(Pagination)
+
+export default Pagination

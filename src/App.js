@@ -9,6 +9,7 @@ import TaskCreatorContainer from './containers/TaskCreatorContainer';
 import NavBarContainer from './containers/NavBarContainer';
 import NavBar from './components/NavBar';
 import './index.css'
+import TaskEditorContainer from './containers/TaskEditorContainer';
 
 
 const App = (props) => {
@@ -21,6 +22,7 @@ const App = (props) => {
                     <Switch>
                         <Route exact path="/" component={TaskListComponent} />
                         <Route path="/create" component={TaskCreatorContainer} />
+                        <Route path="/edit/:id" component={TaskEditorContainer} />
                     </Switch>
                 </div>
             </React.Fragment>
