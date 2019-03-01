@@ -22,8 +22,7 @@ export const fetchData = (page=1, sort_field, sort_direction) => {
 	dispatch({
       type: 'FETCH_DATA',
     });
-    // &sort_field=id&sort_direction=desc
-    // &sort_field=${sort_field}&sort_direction=${sort_direction}
+   
 	return fetch(`https://uxcandy.com/~shapoval/test-task-backend/?developer=Zhanarys&page=${page !==null ? page : ''}&sort_field=${sort_field}&sort_direction=${sort_direction}`)
 		 .then(response => response.json().then(body => ({ response, body })))
       		.then(({ response, body }) => {

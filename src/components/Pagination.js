@@ -3,12 +3,12 @@ const Pagination = (props) => {
     const pageCount = props.taskCount ? props.taskCount : ''
     const currentPage = props.currentPage ? props.currentPage : ''
     const renderData = () => {
-        var lim =  pageCount / 3
+        var lim =  pageCount / 3 // 3 because we render only 3 tasks by page
         var mass = []
         for (var index = 0; index < lim; index++) {
             mass.push(
                 <li
-                    className={currentPage === index +1
+                    className={currentPage === index+1
                     ? "active"
                     : ""}
                     key={index}>

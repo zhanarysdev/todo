@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import Task from '../components/Task';
 import {fetchData} from '../store/actions'
 import Pagination from '../components/Pagination'
+import {Preloader} from '../helpers/helpers'
 import Sorter from '../components/sorter/Sorter';
+
 
 class TaskListComponent extends React.Component {
     constructor(props){
@@ -20,8 +22,12 @@ class TaskListComponent extends React.Component {
     componentDidMount(){
         this.props.fetchData()
     }
+    
 
     render(){
+        // pageChanager method takes 3 params, page param not required(only if you want change page)
+        // "from" param says were called method and execute switch statment
+        // "dir" param is filter_direction
         const pageChanger=(page=this.props.datafetch.page, dir, from)=>{
             if(from) {
                 switch (from) {
@@ -54,12 +60,17 @@ class TaskListComponent extends React.Component {
         return(
             <div>
                 <Sorter filter={pageChanger} currentState={this.state}/>
-                <Task data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''} isAdmin={this.props.login.login}/>
+                <Task data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''} 
+                isAdmin={this.props.login.login}/>
                 <Pagination 
                     data={this.props.datafetch.data ? this.props.datafetch.data.tasks : ''}    
                     taskCount={this.props.datafetch.data ? this.props.datafetch.data.total_task_count : ''}
                     currentPage={this.props.datafetch.data ? this.props.datafetch.page : ''}
                     pageChanger={pageChanger}/>
+                    
+                    
+                    {/* call preloader , give identifier(true or false)*/}
+                {Preloader(this.props.datafetch.isFetching)}
             </div>
         )
     }

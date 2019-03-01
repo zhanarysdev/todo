@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import validator from 'validator'
 import {isModal,logInAct} from '../../store/actions'
-import {Warning} from '../notifaications/notifications'
+import {Warning} from '../../helpers/helpers'
 import styles from'./index.css'
 class Modal extends React.Component{
     constructor(props){

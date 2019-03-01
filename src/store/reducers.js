@@ -33,7 +33,7 @@ export const datafetch = (state = {page:1}, action) => {
         case 'FETCH_DATA':
             return {...state, isFetching: true}
         case 'FETCH_DATA_OK':
-            return {...state, data: action.tasks, page: action.page}
+            return {...state, data: action.tasks, page: action.page, isFetching: false}
 
         case 'FETCH_DATA_NOK':
             return Object.assign({}, state, {

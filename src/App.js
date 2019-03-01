@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 
@@ -7,9 +7,8 @@ import TaskListComponent from './containers/TaskListContainer';
 import ControlButton from './components/ControlButton';
 import TaskCreatorContainer from './containers/TaskCreatorContainer';
 import NavBarContainer from './containers/NavBarContainer';
-import NavBar from './components/NavBar';
-import './index.css'
 import TaskEditorContainer from './containers/TaskEditorContainer';
+import './index.css'
 
 
 const App = (props) => {

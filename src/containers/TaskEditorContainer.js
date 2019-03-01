@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import validator from 'validator'
 import {fetchData} from '../store/actions'
 import TaskEditor from '../components/TaskEditor';
+import {md5Generator} from '../helpers/helpers'
 class TaskEditorContainer extends React.Component {
     constructor(props){
         super(props)
@@ -39,9 +40,61 @@ class TaskEditorContainer extends React.Component {
         :
         console.log("wrong text")
     }
+    sendHundler(e){
+        // if(!this.state.user_name_valid && this.state.user_email_valid && this.state.task_valid){
+        //     return console.log("somthing wroong")
+        // }
+
+        const dataa = new FormData();
+        dataa.append("param_strin", com)
+        dataa.append("signature", sign)  
+       
+        
+        let data = {
+            text: this.state.task_text,
+            status: 0,
+            token:"beejee"
+        }
+        // https://uxcandy.com/~shapoval/test-task-backend/edit/:8930?developer=Zhanarys
+        let url = `status=${encodeURIComponent(0).replace(/[!'()*]/g, function(c) {
+            return '%' + c.charCodeAt(0).toString(16);
+        })}&text=${encodeURIComponent(this.state.task_text).replace(/[!'()*]/g, function(c) {
+            return '%' + c.charCodeAt(0).toString(16);
+        })}&token=${encodeURIComponent("beejee").replace(/[!'()*]/g, function(c) {
+            return '%' + c.charCodeAt(0).toString(16);
+        })}`
+        // let url = rfcGenerator(data)
+        
+        let sign = md5Generator(url)
+        let com = `${url}` 
+        // 9dcef561846b28e9b802b53c7629bff8
+        console.log(sign)
+        console.log(com)
+                fetch(`https://uxcandy.com/~shapoval/test-task-backend/edit/8930?developer=Zhanarys`,{
+                        method: 'POST',
+                        body: dataa,
+                        })
+                        .then(response => console.log(response.json()))
+                        .then(json => {
+                            return console.log(json);
+                        })
+                        .catch(e => {
+                            return console.log(e)
+                        });
+            
+          
+        
+    }
     render(){
         return(
-            <TaskEditor data={this.state} hundlers={{nameHundler:this.nameHundler.bind(this) , emailHundler:this.emailHundler.bind(this), taskHundler:this.taskHundler.bind(this)}}/>
+            <TaskEditor data={this.state} hundlers={
+                {
+                    nameHundler:this.nameHundler.bind(this), 
+                    emailHundler:this.emailHundler.bind(this), 
+                    taskHundler:this.taskHundler.bind(this),
+                    sendHundler: this.sendHundler.bind(this)
+                }
+            }/>
         )
     }
 }

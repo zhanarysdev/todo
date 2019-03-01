@@ -66,7 +66,22 @@ class TaskCreatorContainer extends React.Component {
     }
     render(){
     return (
-        <TaskCreator context={this} />
+        <TaskCreator hundlers={
+            {
+                nameHundler: this.nameHundler.bind(this),
+                emailHundler: this.emailHundler.bind(this),
+                taskHundler: this.taskHundler.bind(this),
+                sendHundler: this.sendHundler.bind(this)
+            }
+        } 
+        states={
+            {
+                user_name_valid: this.state.user_email_valid,
+                user_email_valid: this.state.user_email_valid,
+                task_valid: this.state.task_valid
+            }
+        }
+        />
     )
 }
 }

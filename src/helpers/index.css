@@ -12,3 +12,10 @@
     text-align: center;
 }
 
+
+.preloader {
+    position: absolute;
+    top: calc(100vh/2);
+    left: calc(100vw/2)
+}
+
