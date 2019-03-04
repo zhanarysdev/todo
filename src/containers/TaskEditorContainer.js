@@ -46,31 +46,28 @@ class TaskEditorContainer extends React.Component {
         // }
 
         const dataa = new FormData();
-        dataa.append("param_strin", com)
-        dataa.append("signature", sign)  
-       
-        
-        let data = {
-            text: this.state.task_text,
-            status: 0,
-            token:"beejee"
-        }
-        // https://uxcandy.com/~shapoval/test-task-backend/edit/:8930?developer=Zhanarys
-        let url = `status=${encodeURIComponent(0).replace(/[!'()*]/g, function(c) {
-            return '%' + c.charCodeAt(0).toString(16);
-        })}&text=${encodeURIComponent(this.state.task_text).replace(/[!'()*]/g, function(c) {
-            return '%' + c.charCodeAt(0).toString(16);
-        })}&token=${encodeURIComponent("beejee").replace(/[!'()*]/g, function(c) {
-            return '%' + c.charCodeAt(0).toString(16);
-        })}`
-        // let url = rfcGenerator(data)
-        
+        dataa.append("status", "10")
+        dataa.append("text", "asdasd")
+        dataa.append("token", "beejee")
+        dataa.append("signature", sign)
+        console.log(dataa)  
+
+        // let url = `status=${encodeURIComponent(0).replace(/[!'()*]/g, function(c) {
+        //     return '%' + c.charCodeAt(0).toString(16);
+        // })}&text=${encodeURIComponent(this.state.task_text).replace(/[!'()*]/g, function(c) {
+        //     return '%' + c.charCodeAt(0).toString(16);
+        // })}&token=${encodeURIComponent("beejee").replace(/[!'()*]/g, function(c) {
+        //     return '%' + c.charCodeAt(0).toString(16);
+        // })}`
+        let url = ()=> {
+            return encodeURIComponent('status=10&text=11&token=beejee')
+          }
+        url = url()
         let sign = md5Generator(url)
-        let com = `${url}` 
         // 9dcef561846b28e9b802b53c7629bff8
         console.log(sign)
-        console.log(com)
-                fetch(`https://uxcandy.com/~shapoval/test-task-backend/edit/8930?developer=Zhanarys`,{
+        console.log(url)
+                fetch(`https://uxcandy.com/~shapoval/test-task-backend/edit/9447?developer=Zhanarys`,{
                         method: 'POST',
                         body: dataa,
                         })

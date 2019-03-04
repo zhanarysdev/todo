@@ -6,7 +6,6 @@ import Pagination from '../components/Pagination'
 import {Preloader} from '../helpers/helpers'
 import Sorter from '../components/sorter/Sorter';
 
-
 class TaskListComponent extends React.Component {
     constructor(props){
         super(props)
@@ -32,7 +31,6 @@ class TaskListComponent extends React.Component {
             if(from) {
                 switch (from) {
                     case "username":
-                     console.log('from')
                         this.setState({sortByName: dir == "asc" ?  "desc" : "asc"})
                         this.props.fetchData(page, "username", this.state.sortByName)
                     break

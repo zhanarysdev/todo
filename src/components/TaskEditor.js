@@ -5,7 +5,7 @@ const TaskEditor = (props) => {
     const data=props.data
     const {nameHundler , emailHundler, taskHundler, sendHundler} = props.hundlers
     return (
-        <form className="col s12">
+        <form className="col s12" onEncrypted="multipart/form-data">
             <div className="row">
                 <div className="input-field col s6">
                     <input  id="user_name" type="text" value={data.user_name} className="active"  

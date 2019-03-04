@@ -28,7 +28,6 @@ export const isModal = (state = {isModal: false}, action) => {
 
 
 export const datafetch = (state = {page:1}, action) => {
-    // console.log(state.page)
     switch (action.type) {
         case 'FETCH_DATA':
             return {...state, isFetching: true}

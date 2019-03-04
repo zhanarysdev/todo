@@ -13,7 +13,7 @@ const Task = (props) => {
                                             // edit functionality todo
                                         }}
                                     />
-                                     {/* don't tuch this spans, thei're need for rendering checkboxses(materializecss require spans)  */}
+                                     {/* don't tuch this spans, there're need for rendering checkboxses(materializecss require spans)  */}
                                     <span></span> 
                                 </label>
                             </td>

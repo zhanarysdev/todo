@@ -10,14 +10,12 @@ export const logOutAct = () => ({
 });
 
 export const isModal = (isModal) => {
-  console.log(!isModal)
   return({
 	type: 'IS_MODAL',
 	changer: !isModal
 })}
 
 export const fetchData = (page=1, sort_field, sort_direction) => {
-  console.log(page, sort_field, sort_direction)
 	return (dispatch)=>{
 	dispatch({
       type: 'FETCH_DATA',
