@@ -4,13 +4,14 @@ const Task = (props) => {
     const renderData = () => {
         return props.data ? 
         props.data.map((obj, key) => {
+            var status = obj.status
                     return (
                         <tr key={key}>
                             <td>  
                                 <label>  
-                                    <input type="checkbox" disabled={!props.isAdmin ? 'disabled' : ''}
+                                    <input type="checkbox" disabled={!props.isAdmin ? 'disabled' : ''} checked={obj.status == 10 ? true : false}
                                          onChange={(e)=>{
-                                            // edit functionality todo
+                                            props.statusEditHundler({id:obj.id, status: obj.status})
                                         }}
                                     />
                                      {/* don't tuch this spans, there're need for rendering checkboxses(materializecss require spans)  */}
@@ -21,7 +22,6 @@ const Task = (props) => {
                             <td>{obj.email}</td>
                             <td>{obj.text}</td>
                             <td>
-                                <button className="btn waves-effect waves-light" disabled={!props.isAdmin ? 'disabled' : ''}>
                                 <Link to={{
                                     pathname:`/edit/${obj.id}`,
                                     state:{
@@ -29,9 +29,10 @@ const Task = (props) => {
                                         }
                                     }
                                     } >
+                                        <button className="btn waves-effect waves-light" disabled={!props.isAdmin ? 'disabled' : ''}>
                                     edit
-                                </Link>
                                 </button>
+                                </Link>
                             </td>
                         </tr>
                     )

@@ -7,10 +7,12 @@ import {md5Generator} from '../helpers/helpers'
 class TaskEditorContainer extends React.Component {
     constructor(props){
         super(props)
+        console.log(this.props.location)
         this.state = {
             user_name: this.props.location.state.data.username,
             user_email: this.props.location.state.data.email,
             task_text: this.props.location.state.data.text,
+            status: this.props.location.state.data.id,
                 user_name_valid: false,
                 user_email_valid: false,
                 task_valid: false
@@ -45,31 +47,16 @@ class TaskEditorContainer extends React.Component {
         //     return console.log("somthing wroong")
         // }
 
-        const dataa = new FormData();
-        dataa.append("status", "10")
-        dataa.append("text", "asdasd")
-        dataa.append("token", "beejee")
-        dataa.append("signature", sign)
-        console.log(dataa)  
+        const data = new FormData();
+        data.append("status", this.state.status)
+        data.append("text", this.state.task_text)
+        data.append("token", "beejee")
+        data.append("signature", md5Generator(`status=${this.state.status}&text=${this.state.task_text}&token=beejee`))
 
-        // let url = `status=${encodeURIComponent(0).replace(/[!'()*]/g, function(c) {
-        //     return '%' + c.charCodeAt(0).toString(16);
-        // })}&text=${encodeURIComponent(this.state.task_text).replace(/[!'()*]/g, function(c) {
-        //     return '%' + c.charCodeAt(0).toString(16);
-        // })}&token=${encodeURIComponent("beejee").replace(/[!'()*]/g, function(c) {
-        //     return '%' + c.charCodeAt(0).toString(16);
-        // })}`
-        let url = ()=> {
-            return encodeURIComponent('status=10&text=11&token=beejee')
-          }
-        url = url()
-        let sign = md5Generator(url)
-        // 9dcef561846b28e9b802b53c7629bff8
-        console.log(sign)
-        console.log(url)
-                fetch(`https://uxcandy.com/~shapoval/test-task-backend/edit/9447?developer=Zhanarys`,{
+        
+                fetch(`https://uxcandy.com/~shapoval/test-task-backend/edit/${this.props.location.state.data.id}?developer=Zhanarys`,{
                         method: 'POST',
-                        body: dataa,
+                        body: data,
                         })
                         .then(response => console.log(response.json()))
                         .then(json => {

@@ -4,7 +4,7 @@ add helpers && aditional funcionts here
 */
 
 import React from 'react'
-import md5 from 'md5'
+import md5 from 'js-md5'
 import styles from './index.css'
 export const Warning = (props) => {
     var node = document.createElement("div");

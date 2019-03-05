@@ -1,4 +1,3 @@
-import {store} from './store'
 export const logInAct = () => ({
   type: 'LOG_IN',
   login: true,

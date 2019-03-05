@@ -1,7 +1,6 @@
 import {
     createStore,
     applyMiddleware,
-    compose
 } from 'redux'
 import {
     composeWithDevTools
