@@ -8,27 +8,29 @@ const TaskEditor = (props) => {
         <form className="col s12" onEncrypted="multipart/form-data">
             <div className="row">
                 <div className="input-field col s6">
-                    <input  id="user_name" type="text" value={data.user_name} className="active"  
+                    <input  id="user_name" type="text" value={data.user_name} 
+                    disabled  
                     onChange={(e)=>{
                         nameHundler(e)
                     }}/>
-                    <label htmlFor="user_name">User Name</label>
+                    <label htmlFor="user_name" className="active">User Name</label>
                 </div>
                 <div className="input-field col s6">
-                    <input  id="email" type="text" className="active" value={data.user_email} 
+                    <input  id="email" type="text"  value={data.user_email}
+                    disabled 
                     onChange={(e)=>{
                         emailHundler(e)
                     }} />
-                    <label htmlFor="email">User email</label>
+                    <label htmlFor="email" className="active">User email</label>
                 </div>
             </div>
             <div className="row">
                 <div className="input-field col s12">
-                    <textarea id="task_text" className="materialize-textarea" value={data.task_text}  className="materialize-textarea active"  
+                    <textarea id="task_text" className="materialize-textarea" value={data.task_text}    
                     onChange={(e)=>{
                         taskHundler(e)
                     }}></textarea>
-                    <label htmlFor="task_text">Textarea</label>
+                    <label htmlFor="task_text" className="active">Textarea</label>
                 </div>
             </div>
             <div className="row">

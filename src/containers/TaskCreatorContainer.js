@@ -52,7 +52,7 @@ class TaskCreatorContainer extends React.Component {
                 method: 'POST',
                 body: data,
                 })
-                .then(response => console.log(response.json()))
+                .then(response => alert("created"))
                 .then(json => {
                     return console.log(json);
                 })

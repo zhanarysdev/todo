@@ -7,7 +7,6 @@ import {md5Generator} from '../helpers/helpers'
 class TaskEditorContainer extends React.Component {
     constructor(props){
         super(props)
-        console.log(this.props.location)
         this.state = {
             user_name: this.props.location.state.data.username,
             user_email: this.props.location.state.data.email,
@@ -58,7 +57,7 @@ class TaskEditorContainer extends React.Component {
                         method: 'POST',
                         body: data,
                         })
-                        .then(response => console.log(response.json()))
+                        .then(response => alert("saved"))
                         .then(json => {
                             return console.log(json);
                         })
